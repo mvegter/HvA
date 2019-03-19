@@ -1,0 +1,52 @@
+% !TeX spellcheck = nl_NL
+
+\documentclass[11pt]{report}
+\usepackage{./../hva}
+\usepackage{./portfolio}
+
+\titleMain{Portfolio}
+\titleSub{\textit{Mistakes are made. Lessons are learned.}}
+
+\begin{document}
+	\maketitle
+	\tableofcontents
+	
+	\chapter{Professioneel vakmanschap}
+	\newpage
+	\input{chapters/professioneel-vakmanschap}
+	\newpage
+	
+	\chapter{Onderzoekend vermogen}
+	\newpage
+	\input{chapters/onderzoekend-vermogen}
+	\newpage
+	
+	\chapter{Leervermogen}
+	\newpage
+	\input{chapters/leervermogen}
+	\newpage
+	
+	\chapter{Communicatief vermogen}
+	\newpage
+	\input{chapters/communicatief-vermogen}
+	\newpage
+	
+	\chapter{Beroepsethiek en maatschappelijke oriëntatie}
+	\newpage
+	\input{chapters/beroepsethiek-en-maatschappelijke-orientatie}
+	\newpage
+		
+	\chapter{Samenwerken}
+	\newpage
+	\input{chapters/samenwerken}
+	\newpage
+	
+	% Seperate the appendix TOC from the main content TOC
+	\addtocontents{toc}{\protect\newpage}
+	\addtocontents{toc}{\protect\chapter*{Appendices}}
+	
+	\renewcommand\appendixname{Appendix}
+	
+	\appendix
+	\input{./chapters/appendix}
+\end{document}

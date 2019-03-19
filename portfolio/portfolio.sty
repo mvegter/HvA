@@ -1,0 +1,236 @@
+% !TeX spellcheck = nl_NL
+
+\ProvidesPackage{portfolio}
+
+% packages
+\usepackage{tabularx}
+\usepackage{pdfpages} % Enables the inclusion of external PDF
+\usepackage{pgffor}
+
+\renewcommand{\arraystretch}{1.5} % Default value: 1
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+\let\oldautoref\autoref
+\renewcommand{\autoref}[1]{\underline{\oldautoref{#1}}} % Underline autoref to visualize the link
+
+\makeatletter	
+	% author
+	\newcommand\@authorMobile{}
+	\newcommand\authorMobile[1]{\renewcommand\@authorMobile{#1}}
+	\newcommand\@authorMail{}
+	\newcommand\authorMail[1]{\renewcommand\@authorMail{#1}}
+	\newcommand\@authorCourse{}
+	\newcommand\authorCourse[1]{\renewcommand\@authorCourse{#1}}
+	\newcommand\@authorAdvisor{}
+	\newcommand\authorAdvisor[1]{\renewcommand\@authorAdvisor{#1}}
+\makeatother
+
+% default title
+\titleMain{Portfolio}
+\titleSub{}
+
+% default author info
+\authorMobile{+(31)6-1234-5678}
+\authorMail{john.doe@hva.nl}
+\authorCourse{HBO-ICT}
+\authorAdvisor{John Doe}
+
+\makeatletter
+	\date{%
+		\vfill
+		\begin{flushleft}
+			\renewcommand{\arraystretch}{1}
+			{\small
+				\begin{tabularx}{\textwidth}{rl}
+					\textbf{Datum:} 			& \today\\
+					\\
+					\textbf{Naam:} 				& \@authorName\\
+					\textbf{Studentnummer:} 	& \@authorId\\
+					\\
+					\textbf{Mobiel:} 			& \@authorMobile\\
+					\textbf{E-mail:} 			& \@authorMail\\
+					\\
+					\textbf{Opleiding:}			& \@authorCourse\\
+					\textbf{Loopbaanadviseur:} 	& \@authorAdvisor\\
+				\end{tabularx}
+			}
+		\end{flushleft}
+	}
+\makeatother
+
+\makeatletter
+	\newcommand{\competentieformulier}[6]{%
+		\begin{tabularx}{\textwidth}{|X|}
+			\cline{1-1}
+			{%
+				\begin{tabularx}{\linewidth}{@{}>{\hsize=.5\hsize}X|>{\hsize=1.5\hsize}X@{}}
+					\textbf{Toelichting}
+					&
+					#1
+					\\
+				\end{tabularx}
+			}
+			\\
+			\cline{1-1}
+			{%
+				\begin{tabularx}{\linewidth}{@{}>{\hsize=.5\hsize}X|>{\hsize=1.5\hsize}X@{}}
+					\textbf{Deelcompetenties}
+					&
+					\@for\deelcompetentie:=#2\do{
+						
+						- \deelcompetentie	
+					}
+				\end{tabularx}
+			}
+			\\
+			\cline{1-1}
+			{%
+				\begin{tabularx}{\linewidth}{X}
+					\textbf{Relevante beroepstaken}
+					\\
+					\@for\beroepstaak:=#3\do{
+						
+						- \beroepstaak	
+					}
+				\end{tabularx}
+			}
+			\\
+			\cline{1-1}
+			{%
+				\begin{tabularx}{\linewidth}{X}
+					\textbf{#4}
+					\\
+					#5
+				\end{tabularx}
+			}
+			\\\\
+			{%
+				\begin{tabularx}{\linewidth}{X}
+					\textbf{Verwijzing naar bewijs} in het portfolio:
+					\\
+					\foreach \bewijsstuk[count=\num] in {#6}
+					{
+						\par
+						Naam bewijs \num\ bij \MakeLowercase{\leftmark}: \bewijsstuk\par
+						Nummer van dit bewijs in het portfolio: \thechapter.\num
+					}
+				\end{tabularx}
+			}
+			\\
+			\cline{1-1}
+		\end{tabularx}
+	}
+
+	\newcommand{\starr}[7]{%
+		\subsection*{STARR}
+		\begin{tabularx}{\linewidth}{X}
+			\textbf{Het bewijs betreft:} #1
+			\\
+			\textbf{Het bewijs heeft betrekking op:} \thechapter: \leftmark
+			\\
+			\textbf{Datum bewijs:} #2
+			\\\\
+			{%
+				\begin{tabularx}{\linewidth}{@{}>{\hsize=.1\hsize}X|>{\hsize=1.9\hsize}X|@{}}
+					\cline{2-2}
+					\centering {\large\textbf{S}}
+					&
+					\textbf{Situatie:}
+					\\
+					&
+					#3
+					\\
+					\cline{2-2}
+				\end{tabularx}
+			}
+			\\\\
+			{%
+				\begin{tabularx}{\linewidth}{@{}>{\hsize=.1\hsize}X|>{\hsize=1.9\hsize}X|@{}}
+					\cline{2-2}
+					\centering {\large\textbf{T}}
+					&
+					\textbf{Taak:}
+					\\
+					&
+					#4
+					\\
+					\cline{2-2}
+				\end{tabularx}
+			}
+			\\\\
+			{%
+				\begin{tabularx}{\linewidth}{@{}>{\hsize=.1\hsize}X|>{\hsize=1.9\hsize}X|@{}}
+					\cline{2-2}
+					\centering {\large\textbf{A}}
+					&
+					\textbf{Activiteiten:}
+					\\
+					&
+					#5
+					\\
+					\cline{2-2}
+				\end{tabularx}
+			}
+			\\\\
+			{%
+				\begin{tabularx}{\linewidth}{@{}>{\hsize=.1\hsize}X|>{\hsize=1.9\hsize}X|@{}}
+					\cline{2-2}
+					\centering {\large\textbf{R}}
+					&
+					\textbf{Resultaat:}
+					\\
+					&
+					#6
+					\\
+					\cline{2-2}
+				\end{tabularx}
+			}
+			\\\\
+			{%
+				\begin{tabularx}{\linewidth}{@{}>{\hsize=.1\hsize}X|>{\hsize=1.9\hsize}X|@{}}
+					\cline{2-2}
+					\centering {\large\textbf{R}}
+					&
+					\textbf{Reflectie:}
+					\\
+					&
+					#7
+					\\
+					\cline{2-2}
+				\end{tabularx}
+			}
+		\end{tabularx}
+		\newpage
+	}
+
+	\newcommand{\bewijs}[3]{%
+		\section{#1}
+		#2
+				
+		\subsection*{Bewijs}
+		#3
+	}
+\makeatother
+
+\makeatletter
+	\newcommand{\competentie}[2]{%
+		\section*{Competentieformulier}
+		\addcontentsline{toc}{section}{Competentieformulier}
+		#1
+		\newpage
+		
+		\@for\bewijsstuk:=#2\do{%
+			\bewijsstuk
+			\newpage
+		}
+	}
+\makeatother
+
+\newcommand{\pdfpa}[1]{%
+	\includepdf[
+		pages=-,
+		scale=0.95,
+		frame
+	]{./appendices/#1}
+}

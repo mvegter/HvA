@@ -1,0 +1,99 @@
+% !TeX spellcheck = nl_NL
+
+\ProvidesPackage{hva}
+
+% packages
+\usepackage[dutch]{babel}
+\usepackage[a4paper]{geometry}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{hyperref} % Automatically adds links and bookmarks
+
+% packages config
+\graphicspath{
+	{./../images/}, % images shared across projects
+	{./images/},    % images specific to this project
+}
+
+% clear default title page
+\title{}
+\author{}
+\date{}
+
+\makeatletter
+	% title
+	\newcommand\@titleMain{}
+	\newcommand\titleMain[1]{\renewcommand\@titleMain{#1}}
+	\newcommand\@titleSub{}
+	\newcommand\titleSub[1]{\renewcommand\@titleSub{#1}}
+	
+	% author
+	\newcommand\@authorName{}
+	\newcommand\authorName[1]{\renewcommand\@authorName{#1}}
+	\newcommand\@authorId{}
+	\newcommand\authorId[1]{\renewcommand\@authorId{#1}}
+\makeatother
+
+% default title
+\titleMain{The main title of this report}
+\titleSub{The sub title of this report}
+
+% default author info
+\authorName{John Doe}
+\authorId{123456789}
+
+\makeatletter
+	\title{%
+		{\huge \@titleMain}
+		\\
+		{\large \@titleSub}
+	}
+
+	\author{%
+		% Intentionally left blank
+	}
+
+	\date{%
+		\vfill
+		\begin{flushleft}
+			{\small
+				\begin{tabularx}{\textwidth}{rl}
+					\textbf{Datum:} 			& \today\\
+					\\
+					\textbf{Naam:} 				& \@authorName\\
+					\textbf{Studentnummer:} 	& \@authorId\\
+				\end{tabularx}
+			}
+		\end{flushleft}
+	}
+\makeatother
+
+\setlength\headheight{33pt}
+\pagestyle{fancy}
+
+\fancypagestyle{plain}{
+	\lhead{%
+		\includegraphics[height=1cm]{hva-logo}
+	}
+	
+	\chead{%
+		% Intentionally left blank
+	}
+	
+	\rhead{%
+		% Intentionally left blank
+	}
+}
+
+\lhead{%
+	\includegraphics[height=1cm]{hva-logo}
+}
+
+\chead{%
+	% Intentionally left blank
+}
+
+\rhead{%
+	% Intentionally left blank
+}
