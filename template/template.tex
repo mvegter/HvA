@@ -1,0 +1,28 @@
+% !TeX spellcheck = nl_NL
+
+\documentclass[11pt]{report}
+\usepackage{./../hva}
+
+% packages
+\usepackage[
+	math, 	% The math-option activates math formula for \blindtext.
+	random, % The random-option changes the default blind text to a sequence of predefined sentences.
+	pangram % The pangram-option changes the default blind text to a sequence of pangrams.
+]{blindtext}
+
+\begin{document}
+	\maketitle
+	\tableofcontents
+	
+	\chapter{Chapter}
+	\section{Section}
+	\subsection{Subsection}
+	\subsubsection{Subsubsection}
+	\paragraph{Paragraph}
+	\subparagraph{Subparagraph}
+	
+	\blinddocument
+	\blindmathpaper
+	
+	\Blinddocument
+\end{document}
