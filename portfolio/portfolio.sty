@@ -104,7 +104,7 @@
 					#5
 				\end{tabularx}
 			}
-			\\\\
+			\\[10mm]
 			{%
 				\begin{tabularx}{\linewidth}{X}
 					\textbf{Verwijzing naar bewijs} in het portfolio:
@@ -219,8 +219,6 @@
 	\newcommand{\bewijs}[3]{%
 		\section{#1}
 		#2
-		
-		\subsection*{Bewijs}
 		#3
 	}
 \makeatother
@@ -239,10 +237,37 @@
 	}
 \makeatother
 
+\newcommand{\pdfl}[1]{%
+	\includepdf[
+		pages=-,
+		scale=0.9,
+		frame,
+	]{./appendices/#1}
+}
+
+\newcommand{\pdfbl}[1]{%
+	\includepdf[
+		pages=-,
+		scale=0.9,
+		frame,
+		pagecommand={
+			\subsection*{Bewijs}
+		},
+	]{./appendices/#1}
+}
+
+\newcommand{\pdfp}[1]{%
+	\includepdf[
+		pages=-,
+		scale=0.7,
+		frame,
+	]{./appendices/#1}
+}
+
 \newcommand{\pdfpa}[1]{%
 	\includepdf[
 		pages=-,
 		scale=0.95,
-		frame
+		frame,
 	]{./appendices/#1}
 }
