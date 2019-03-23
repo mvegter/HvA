@@ -85,15 +85,18 @@
 			}
 			\\
 			\cline{1-1}
+			\textbf{Relevante beroepstaken}
+			\\
 			{%
-				\begin{tabularx}{\linewidth}{X}
-					\textbf{Relevante beroepstaken}
-					\\
-					\@for\beroepstaak:=#3\do{
-						
-						- \beroepstaak	
+				\renewcommand{\arraystretch}{1}
+				{%
+					\@for \beroepstaak:=#3\do{%
+						\begin{tabularx}{\linewidth}{lX}
+							- & {\beroepstaak}
+						\end{tabularx}
 					}
-				\end{tabularx}
+				}
+				\renewcommand{\arraystretch}{1.5} % Default value: 1
 			}
 			\\
 			\cline{1-1}
