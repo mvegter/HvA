@@ -57,7 +57,24 @@
 		}
 	}
 	{% bewijs
-		
+		{%
+			\includepdf[
+				pages=1,
+				frame,
+				scale=0.90,
+				pagecommand={
+					\section*{Bewijs}
+					Zie \autoref{appendix:Onderzoeksrapport} voor het onderzoeksrapport.
+				}
+			]{./appendices/beoordelingsformulier-onderzoeksrapport}
+			
+			\includepdf[
+				pages=2-,
+				frame,
+				scale=0.90,
+				pagecommand={}
+			]{./appendices/beoordelingsformulier-onderzoeksrapport}
+		}
 	},
 	\bewijs
 	{% naam

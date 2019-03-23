@@ -104,7 +104,7 @@
 					#5
 				\end{tabularx}
 			}
-			\\[10mm]
+			\\[7.5mm]
 			{%
 				\begin{tabularx}{\linewidth}{X}
 					\textbf{Verwijzing naar bewijs} in het portfolio:
@@ -112,8 +112,8 @@
 					\foreach \bewijsstuk[count=\num] in {#6}
 					{
 						\par
-						Naam bewijs \num\ bij \MakeLowercase{\leftmark}: \bewijsstuk\par
-						Nummer van dit bewijs in het portfolio: \thechapter.\num
+						\hspace*{5mm} Naam bewijs \num\ bij \MakeLowercase{\leftmark}: \par
+						\hspace*{5mm} \hspace*{5mm} \thechapter.\num\ \textbf{\bewijsstuk}
 					}
 				\end{tabularx}
 			}
@@ -126,11 +126,12 @@
 		\subsection*{STARR}
 		\begin{tabularx}{\linewidth}{X}
 			\textbf{Het bewijs betreft:} #1
-			\\
+		\end{tabularx}
+		\begin{tabularx}{\linewidth}{X}
 			\textbf{Het bewijs heeft betrekking op:} \thechapter: \leftmark
-			\\
+		\end{tabularx}
+		\begin{tabularx}{\linewidth}{X}
 			\textbf{Datum bewijs:} #2
-			\\\\
 		\end{tabularx}
 		\bigskip
 		\begin{tabularx}{\linewidth}{X}
