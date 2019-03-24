@@ -1,0 +1,51 @@
+% packages
+\usepackage[a4paper]{geometry}
+\usepackage[dutch]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{pdfpages} 	% Enables the inclusion of external PDF
+\usepackage{tabularx} 	% Allows you to create tables that match the width of the paragraph
+\usepackage{fancyhdr} 	%
+\usepackage{graphicx} 	%
+\usepackage{hyperref} 	% Automatically adds links and bookmarks
+
+\makeatletter	
+	% author
+	\newcommand\@authorPeriod{}
+	\newcommand\authorPeriod[1]{\renewcommand\@authorPeriod{#1}}
+	\newcommand\@authorCourse{}
+	\newcommand\authorCourse[1]{\renewcommand\@authorCourse{#1}}
+	\newcommand\@authorAdvisor{}
+	\newcommand\authorAdvisor[1]{\renewcommand\@authorAdvisor{#1}}
+\makeatother
+
+% default title
+\titleMain{Competentie-ontwikkelplan}
+\titleSub{}
+
+% default author info
+\authorPeriod{Jaar X - Semester Y}
+\authorName{John Doe}
+\authorId{123456789}
+\authorCourse{HBO-ICT}
+\authorAdvisor{John Doe}
+
+\makeatletter
+	\date{%
+		\vfill
+		\begin{flushleft}
+			\renewcommand{\arraystretch}{1}
+			{\small
+				\begin{tabularx}{\textwidth}{rl}
+					\textbf{Naam:} 				& \@authorName\\
+					\textbf{Studentnummer:} 	& \@authorId\\
+					\\
+					\textbf{Periode:}			& \@authorPeriod\\
+					\textbf{Datum:} 			& \@authorDate\\
+					\\
+					\textbf{Opleiding:}			& \@authorCourse\\
+					\textbf{Loopbaanadviseur:} 	& \@authorAdvisor\\
+				\end{tabularx}
+			}
+		\end{flushleft}
+	}
+\makeatother

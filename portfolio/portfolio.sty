@@ -4,7 +4,6 @@
 
 % packages
 \usepackage{tabularx}
-\usepackage{pdfpages} % Enables the inclusion of external PDF
 \usepackage{pgffor}
 
 \renewcommand{\arraystretch}{1.5} % Default value: 1
@@ -43,7 +42,7 @@
 			\renewcommand{\arraystretch}{1}
 			{\small
 				\begin{tabularx}{\textwidth}{rl}
-					\textbf{Datum:} 			& \today\\
+					\textbf{Datum:} 			& \@authorDate\\
 					\\
 					\textbf{Naam:} 				& \@authorName\\
 					\textbf{Studentnummer:} 	& \@authorId\\
@@ -257,21 +256,5 @@
 		pagecommand={
 			\subsection*{Bewijs}
 		},
-	]{./appendices/#1}
-}
-
-\newcommand{\pdfp}[1]{%
-	\includepdf[
-		pages=-,
-		scale=0.7,
-		frame,
-	]{./appendices/#1}
-}
-
-\newcommand{\pdfpa}[1]{%
-	\includepdf[
-		pages=-,
-		scale=0.95,
-		frame,
 	]{./appendices/#1}
 }

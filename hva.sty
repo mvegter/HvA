@@ -5,6 +5,7 @@
 % packages
 \usepackage[dutch]{babel}
 \usepackage[a4paper]{geometry}
+\usepackage{pdfpages} % Enables the inclusion of external PDF
 \usepackage{tabularx}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
@@ -29,6 +30,8 @@
 	\newcommand\titleSub[1]{\renewcommand\@titleSub{#1}}
 	
 	% author
+	\newcommand\@authorDate{}
+	\newcommand\authorDate[1]{\renewcommand\@authorDate{#1}}
 	\newcommand\@authorName{}
 	\newcommand\authorName[1]{\renewcommand\@authorName{#1}}
 	\newcommand\@authorId{}
@@ -40,6 +43,7 @@
 \titleSub{The sub title of this report}
 
 % default author info
+\authorDate{\today}
 \authorName{John Doe}
 \authorId{123456789}
 
@@ -59,7 +63,7 @@
 		\begin{flushleft}
 			{\small
 				\begin{tabularx}{\textwidth}{rl}
-					\textbf{Datum:} 			& \today\\
+					\textbf{Datum:} 			& \@authorDate\\
 					\\
 					\textbf{Naam:} 				& \@authorName\\
 					\textbf{Studentnummer:} 	& \@authorId\\
@@ -96,4 +100,20 @@
 
 \rhead{%
 	% Intentionally left blank
+}
+
+\newcommand{\pdfp}[1]{%
+	\includepdf[
+	pages=-,
+	scale=0.7,
+	frame,
+	]{./appendices/#1}
+}
+
+\newcommand{\pdfpa}[1]{%
+	\includepdf[
+	pages=-,
+	scale=0.95,
+	frame,
+	]{./appendices/#1}
 }
