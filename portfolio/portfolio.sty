@@ -124,7 +124,7 @@
 		\end{tabularx}
 	}
 
-	\newcommand{\starr}[7]{%
+	\newcommand{\starr}[8]{%
 		\subsection*{STARR}
 		\begin{tabularx}{\linewidth}{X}
 			\textbf{Het bewijs betreft:} #1
@@ -211,6 +211,21 @@
 					\\
 					&
 					#7
+					\\
+					\cline{2-2}
+				\end{tabularx}
+			}
+		\end{tabularx}
+		\bigskip
+		\begin{tabularx}{\linewidth}{X}
+			{%
+				\begin{tabularx}{\linewidth}{@{}>{\hsize=.1\hsize}X|>{\hsize=1.9\hsize}X|@{}}
+					\cline{2-2}
+					&
+					\textbf{Referentie:}
+					\\
+					&
+					#8
 					\\
 					\cline{2-2}
 				\end{tabularx}
